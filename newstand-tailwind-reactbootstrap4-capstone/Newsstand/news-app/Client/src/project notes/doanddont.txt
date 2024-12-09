@@ -1,0 +1,110 @@
+import {useLoaderData} from 'react-router-dom'
+const RootLayout = () => {
+//! DON'T: FETCHED - allusers !!!take away
+    const allSubscribers = useLoaderData()
+    console.log(allSubscribers);
+
+    //? note: layouts should have limited code and heavy data in components
+
+//* DO: fetch sensitive data like user data or database/data through server functionality 
+const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    let loading;
+    const handleLogin = () => {
+        const loginData = {
+            userName,
+            password,
+        };
+        loading = true;
+        fetch('http://localhost:5000/subscribe/login', {
+            method: 'POST',
+            body: JSON.stringify(loginData),
+            headers: { 'content-type': 'application/json' }
+        })
+        .then(
+            () => {
+                loading = false;
+                navigate('/')
+            })
+        .catch((error) => {
+            loading = false;
+            alert('an error happened. Please happened. Please Check Console')
+            console.log(error)
+        })
+    }
+
+    //! Login function : this is not good...hackers can see users data for free//! FETCHED USER for login
+    
+
+    const handleLogin = () => {
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value
+        const mySubscriber = allSubscribers.data.find((subscriber) => {
+            if (subscriber.username === username && subscriber.password === password) {
+                return subscriber
+            }
+        })
+        setSubcriber(mySubscriber)
+    }
+}
+export default RootLayout
+
+
+
+//! DONT: FETCHES ALL SUBSCRIBERS ON THE FRONT-END...THENS SHOWS ALL THE DATA IN THE DEV-TOOLS...WITHOUT HAVING TO HACK FOR THE INFO
+export const SubscriberLoader = async () => {
+    const res = await fetch('http://localhost:5000/subscribe')
+    if (!res.ok) {
+        throw Error("Could not find Subscribers data")
+    }
+    const data = await res.json()
+    console.log(data);
+
+    return data
+}
+
+//! DIDN'T USE....
+ // function handleInput(e) {
+    //     console.log(e.target.id)
+    //     //* Background Info 
+    //     //first name    
+    //     e.target.id === "fName" ? setSubscriberInfo((currentState) => { return { ...currentState, fName: e.target.value } }) : false;
+    //     //middle name    
+    //     e.target.id === "mName" ? setSubscriberInfo((currentState) => { return { ...currentState, mName: e.target.value } }) : false;
+    //     //lname 
+    //     e.target.id === "lName" ? setSubscriberInfo((currentState) => { return { ...currentState, lName: e.target.value } }) : false;
+    //     // email
+    //     e.target.id === "email" ? setSubscriberInfo((currentState) => { return { ...currentState, email: e.target.value } }) : false;
+    //     //address
+    //     e.target.id === "address" ? setSubscriberInfo((currentState) => { return { ...currentState, address: e.target.value } }) : false;
+    //     // phone
+    //     e.target.id === "phone" ? setSubscriberInfo((currentState) => { return { ...currentState, phone: e.target.value } }) : false;
+    //     // * Payment Method
+    //     // accountNumber
+    //     e.target.id === "accountNumber" ? setSubscriberInfo((currentState) => { return { ...currentState, accountNumber: e.target.value } }) : false;
+    //     // currency
+    //     e.target.id === "currency" ? setSubscriberInfo((currentState) => { return { ...currentState, currency: e.target.value } }) : false;
+    //     // cardType
+    //     e.target.id === "cardType" ? setSubscriberInfo((currentState) => { return { ...currentState, cardType: e.target.value } }) : false;
+    //     // * Security Section
+    //     // nickname
+    //     e.target.id === "nickname" ? setSubscriberInfo((currentState) => { return { ...currentState, nickname: e.target.value } }) : false;
+    //     // petNickname
+    //     e.target.id === "petNickname" ? setSubscriberInfo((currentState) => { return { ...currentState, petNickname: e.target.value } }) : false;
+    //     // favFood
+    //     e.target.id === "favFood" ? setSubscriberInfo((currentState) => { return { ...currentState, favFood: e.target.value } }) : false;
+    //     // favColor
+    //     e.target.id === "favColor" ? setSubscriberInfo((currentState) => { return { ...currentState, favColor: e.target.value } }) : false;
+    //     // favCelebrity
+    //     // changedName
+    //     e.target.id === "changedName" ? setSubscriberInfo((currentState) => { return { ...currentState, changedName: e.target.value } }) : false;
+    //     // gmaMiddleName
+    //     e.target.id === "gmaMiddleName" ? setSubscriberInfo((currentState) => { return { ...currentState, gmaMiddleName: e.target.value } }) : false;
+    //     // songName
+    //     e.target.id === "songName" ? setSubscriberInfo((currentState) => { return { ...currentState, songName: e.target.value } }) : false;
+    //     // username
+    //     e.target.id === "userName" ? setSubscriberInfo((currentState) => { return { ...currentState, secretWord: e.target.value } }) : false;
+    //     // password
+    //     e.target.id === "password" ? setSubscriberInfo((currentState) => { return { ...currentState, secretWord: e.target.value } }) : false;
+    // }

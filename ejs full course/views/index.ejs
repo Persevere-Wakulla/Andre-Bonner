@@ -1,0 +1,39 @@
+<%- include("layout/header") %>
+<main>
+    <!-- form -->
+    <!-- <h1>Home Page</h1> -->
+    
+    <form action="/" method="post" id="form">
+        <input type="text" placeholder="enter a name of programming language" name="plName">
+        <button type="submit" id="btn-add">Add</button>
+    </form>
+    <section class="container">
+            <h1 id="list-title">PROGRAMMING LANGUAGE LIST</h1>
+
+            <div class="list-container">
+
+                <ul>
+                    <!-- using javascript in ejs syntax -->
+                    <!-- syntax for js variables: <%=  %> -->
+                    <!-- syntax for loops/conditionals/etc w/out equal sign: <%  %>-->
+                    <% if(plNames.length>0){ %>
+                        <!-- long way -->
+                        <!-- <li><%= plNames[0] %></li>
+                <li><%= plNames[1] %></li>
+                <li><%= plNames[2] %></li>
+                <li><%= plNames[3] %></li> -->
+                        <!-- loop -->
+                        <% for(let i=0; i<plNames.length; i++){ %>
+
+                            <li id="list">
+                                <%= plNames[i] %>
+                            </li>
+                            <% } %>
+                                <% }else{ %>
+                                    <p>No data available</p>
+                                    <% } %>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <%- include("layout/footer") %>

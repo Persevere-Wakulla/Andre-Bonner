@@ -1,0 +1,87 @@
+Problems accessing localStorage for an SSR application
+When working with a framework like Next.js that executes code on the server side, using localStorage produces an error stating, “window is not defined.”
+
+localStorage, as used in our code, is a built-in property of the window object, window.localStorage. In our code, we ignored window while accessing localStorage because it’s a global object; we can choose to include the window object because it’s optional.
+
+Now, this window object is not available on the server side but rather the client side/browser, which prompts the error. To fix the error on the server side, check whether the window object is defined. This way, our code only runs on the environment where the window is available.
+
+Open the src/useLocalStorage.js file and update the getStorageValue() function so you have the following:
+
+function getStorageValue(key, defaultValue) {
+  // getting stored value
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem(key);
+    const initial = saved !== null ? JSON.parse(saved) : defaultValue;
+    return initial;
+  }
+}
+Don’t forget that we’ve also used the localStorage inside the useEffect Hook in the useLocalStorage.js file. But in this case, the localStorage is safe because the useEffect Hook only runs on the client side, where we have access to the window object.
+
+Test the project to ensure everything still works as expected.
+
+Dealing with common pitfalls
+How to handle localStorage is not defined
+The “localStorage is not defined” error in React occurs because localStorage is a browser-specific Web Storage API. The error mainly comes up when you use a browser-specific functionality in an environment where it is undefined. This can happen, for example, if your code runs on the server side where localStorage is not defined. Here are some steps to fix it:
+
+Check localStorage availability: You can do this by wrapping your code in a conditional (if/else) statement or by checking the if window.localStorage is defined
+Browser compatibility: While it is relatively rare, this error may occur because very old browsers might not have implemented the localStorage API, leading to this error if your code relies on it without proper checks. As a result, fallback alternatives like cookies and server-side storage should be considered
+Feature detection: You can use feature detection for broader compatibility or to offer a fallback mechanism. It will enable you to provide alternatives for environments without local storage automatically
+How to clear localStorage in React effectively
+Clearing localStorage removes key-value pairs stored by your application, so it is important to only do this when you are sure. To clear the local storage in React, there are two main ways to go about it:
+
+!The localStorage.clear() method: This is the simplest and fastest way to clear localStorage, as everything stored in that domain will be cleared out. Please note that this method leaves nothing behind. It is quite straightforward and can be used by running the code: localStorage.clear();
+
+!The .removeItem() method: This method deletes or removes a specified key from the domain storage. It gives you more control over what gets deleted. This method is also straightforward and requires you to pass the name of the key to be deleted. Here is the syntax: localStorage.removeItem(key)
+
+Frequently asked questions about localStorage and React Hooks
+
+!How do I create a custom hook for localStorage?
+Custom hooks are not a typical first option for localStorage. However, they have their use cases and advantages.
+
+In this example, we delve into how to create a custom hook for localStorage using useEffect and useState:
+
+*import { useState, useEffect } from 'react';
+
+*export default function useLS(key, defaultValue) {
+*  const [value, setValue] = useState(() => {
+*    const storedValue = localStorage.getItem(key);
+*    if (storedValue) {
+*      return JSON.parse(storedValue);
+*    }
+*    return defaultValue;
+*  });
+
+*  useEffect(() => {
+*    if (value === undefined) return;
+*    localStorage.setItem(key, JSON.stringify(value));
+*  }, [value, key]);
+*
+*  return [value, setValue];
+*}
+
+*export default useLS;
+
+The code above is a custom hook called useLS that allows storing and retrieving data from the browser’s local storage using React’s useState and useEffect Hooks. It takes in two arguments: key and defaultValue. The useState Hook retrieves data from localStorage, parses the data and returns defaultValue if the value is null.
+
+The useLS returns the current value stored in localStorage for a given key and a function to update the value.
+
+!How do I fetch data from localStorage in React?
+Fetching data from localStorage can be done using the .getItem(key) method. This method retrieves the value attached to the key that is passed into the method. Here is the syntax: localStorage.getItem(your key)
+
+!What is the difference between sessionStorage and localStorage in React?
+!Below is a table detailing the differences between sessionStorage and localStorage:
+
+? sessionStorage	
+It is session-based. As such, sessionStorage data is cleared when the page session ends	
+It is typically used for temporary data that does not need to be stored or persisted across sessions	
+sessionStorage has a smaller storage capacity	
+sessionStorage is accessible only within the current window	
+
+? localStorage
+The localStorage data does not expire or get cleared without doing it manually
+
+It is typically used for data that needs to be stored and accessible across sessions
+
+localStorage has a larger storage capacity
+
+Accessible across the entire domain

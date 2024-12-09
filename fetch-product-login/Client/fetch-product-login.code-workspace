@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../team project/test/job-listings-with-filtering"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "fetch-product-login"
+	}
+}

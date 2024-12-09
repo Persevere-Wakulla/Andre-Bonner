@@ -1,0 +1,65 @@
+:root{
+    --color-1: #deb7e6;
+    --color-2: #3b024a;
+    --duration: 2s;
+}
+body{
+    margin: 0 auto;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    position: relative;
+    font-size: 16px;
+    padding: 1em 2.5em;
+    /* background: linear-gradient(0deg, var(--color-1) 0%, var(--color-2) 100%); */
+    color: aliceblue;
+    /* border-image: linear-gradient(45deg, transparent, #4d9f0c 20px); */
+    /* border: 2px solid black; */
+}
+a:after,a:before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    /* border-image: repeating-linear-gradient(45deg, transparent, #4d9f0c 20px); */
+    /* border-radius:  5px 5px 50% 50%; */
+    border-top-right-radius: 50% 20px;
+    border-bottom-right-radius: 5px 10%;
+    border-bottom-left-radius: 50% 20px;
+    border-top-left-radius: 5px 10%;
+}
+a:before{
+    background: linear-gradient(90deg, var(--color-2) 0%, var(--color-1) 100%);
+    animation: OpacityAnim var(--duration) ease-in-out 0 infinite alternate ;
+}
+a:after{
+    background: linear-gradient(0deg, var(--color-1) 0%, var(--color-2) 100%);
+    animation: OpacityAnim var(--duration) ease-in-out calc(-1*var(--duration)) infinite alternate ;
+}
+/* a:hover:after,a:hover:before{
+    animation: Vibration var(--duration) ease-in-out infinite alternate;
+} */
+a:hover:before{
+    animation: Vibration var(--duration) ease-in-out 0 infinite alternate;
+}
+a:hover:after{
+    animation: Vibration var(--duration) ease-in-out calc(-1*var(--duration)) infinite alternate;
+}
+@keyframes OpacityAnim {
+    0%{opacity: 1.0;}
+    100%{opacity: 0.0;}    
+}
+@keyframes Vibration {
+    0%{opacity: 1.0; scale: 1; }
+    100%{opacity: 0.0; scale: 1.1;}    
+}
+

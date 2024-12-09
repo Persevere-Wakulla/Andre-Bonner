@@ -1,0 +1,77 @@
+Write a function which changes all but the last four characters into "#".
+
+function maskify(cc){
+if(cc.length <= 4) return cc
+}
+const unmask = cc.slice(-4)//cuts off last four
+const pad = "#".repeat(cc.length - 4)
+return pad + unmask
+}
+
+or
+
+function maskify(cc){
+if(cc.length <= 4) return cc
+}
+const unmask = cc.slice(-4)//cuts off last four
+const mask = unmask.padStart(cc.length,"#")
+return mask
+}
+
+or
+
+function maskify(cc){
+return cc.slice(0,-4).replace(/./g. "#") + cc.slice(-4);
+}
+
+or
+
+function maskify(cc){
+return cc.replace(/.(?=....)/g);
+}
+
+
+or
+
+function maskify(cc){
+return cc.replace(/.(?=.{4})/g. "#");
+}
+
+
+The padStart() method of String values pads this string with another string (multiple times, if needed) until the resulting string reaches the given length. The padding is applied from the start of this string.
+
+ex:
+const str1 = '5';
+
+console.log(str1.padStart(2, '0'));
+// Expected output: "05"
+
+ex:
+const fullNumber = '2034399002125581';
+const last4Digits = fullNumber.slice(-4);
+const maskedNumber = last4Digits.padStart(fullNumber.length, '*');
+
+console.log(maskedNumber);
+// Expected output: "************5581"
+
+
+
+Basic examples
+js
+Copy to Clipboard
+"abc".padStart(10); // "       abc"
+"abc".padStart(10, "foo"); // "foofoofabc"
+"abc".padStart(6, "123465"); // "123abc"
+"abc".padStart(8, "0"); // "00000abc"
+"abc".padStart(1); // "abc"
+Fixed width string number conversion
+js
+Copy to Clipboard
+// JavaScript version of: (unsigned)
+// printf "%0*d" width num
+function leftFillNum(num, targetLength) {
+  return num.toString().padStart(targetLength, "0");
+}
+
+const num = 123;
+console.log(leftFillNum(num, 5)); // "00123"

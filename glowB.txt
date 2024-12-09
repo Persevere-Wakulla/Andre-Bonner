@@ -1,0 +1,14 @@
+ animation-name: glow1;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+	
+	
+	@-webkit-keyframes glow1 {
+    from {
+      filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #0a21ef) drop-shadow(0 0 10px #310ebf) drop-shadow(0 0 10px #233ff6) drop-shadow(0 0 20px #3213bf) drop-shadow(0 0 20px #0404f6);
+    }
+    
+    to {
+     filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #ff4da6) drop-shadow(0 0 10px #ff4da6) drop-shadow(0 0 10px #ff4da6) drop-shadow(0 0 10px #ff4da6) drop-shadow(0 0 20px #ff4da6) drop-shadow(0 0 20px #ff4da6);
+    }
+  }

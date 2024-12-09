@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background-color: rgba(251, 251, 248, 0.588);
+}
+#add-link,
+#detail-link,
+#edit-link,
+#delete-link
+{padding: 10px; background-color: rgb(246, 251, 246); border-radius: 10px;}
+
+#add-link{padding-left: 20px; padding-right: 20px;}

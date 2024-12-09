@@ -1,0 +1,65 @@
+Git Lab Notes
+
+node_modules/...CANT BE PUSHED TO GIT HUB....GET THEM ON THE STREET TO FUNCTION PROJECTS
+
+ resource websites:
+ knip.dev
+ Nx
+ npm shrinkwrap- docs.npmjs.com/cli/
+ vercel.com/cli/threejs.org
+ fakestoreapi.com/docs
+ jquery.com
+ getbootstrap.com
+ react.dev
+ code.visualstudio.com
+ marketplace.visualstudio.com(extension-info)
+ dummyjson.com
+ reactrouter.com
+ regexr.com
+ npmjs.com
+ expressjs.com
+mongoosejs.com
+nextjs.org
+tailwindui.com
+spotlight.tailwindui.com
+developer.mozilla.org
+chrome.google.com
+angular.io
+router.vuejs.org
+reactnative.dev
+tailwindcss.com
+passportjs.org
+ejs-programming-app.herokuapp.com(ejs full course video)
+ejs.co
+authjs
+dashboard.heroku.com
+
+
+
+
+These programs are for convicted felons in web dev...
+1. The last mile
+2. code 7370
+3. Prison to Professional
+4. Tech 4 Troops
+5. The center for Employment Opportunities
+6. SkillUp
+7. The Fortune Society
+8. The Homeboy Industries
+9. The National Hire Network
+10.  Local Community Colleges....and adult Education programs
+
+Books:
+
+
+
+
+MUSIC:
+CHINEY ASSASIN-BLACK CHINEY
+shenseea - hit and run
+ 
+ 
+ videos:
+ Python Full Course for free
+ Python Tutorial For Beginners(with Mini-projects)-free-code-camp
+ python programming full course by simplilearn

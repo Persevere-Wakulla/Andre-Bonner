@@ -1,0 +1,89 @@
+import { useEffect, useState } from 'react';
+import Spinner from '../components/Spinner';
+import { Link } from 'react-router-dom';
+import { Badge } from 'react-bootstrap';
+
+
+const Home = () => {
+
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const request = await fetch('http://localhost:5555/books');
+      const result = await request.json();
+      // console.log(result);
+      if (result.data) {
+        setBooks(result.data)
+      } else {
+        console.error()
+      }
+    }
+    if (loading) {
+      fetchBooks()
+    }
+    setLoading(false)
+  }, [])
+
+  return (
+    <div className='p-4'>
+      <div className='flex justify-between items-center'>
+        <h1 className='text-3xl my-8'>Books List</h1>
+        <Link to='/books/create'>
+          <h2 className='text-sky-800 text-4xl'>Add Book</h2>
+        </Link>
+      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <table className='w-full border-separate border-spacing-2'>
+          <thead>
+            <tr>
+              <th className='border border-slate-600 rounded-md'>No</th>
+              <th className='border border-slate-600 rounded-md'>Title</th>
+              <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
+              <th className='border border-slate-600 rounded-md max-md:hidden'>Publish Year</th>
+              <th className='border border-slate-600 rounded-md'>Operations</th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.map((book, index) => (
+              <tr key={book._id} className='h-8'>
+                <td className='border border-slate-700 rounded-md text-center'>
+                  {index + 1}
+                </td>
+                <td className='border border-slate-700 rounded-md text-center'>
+                  {book.title}
+                </td>
+                <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+                  {book.author}
+                </td>
+                <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+                  {book.publishYear}
+                </td>
+                <td className='border border-slate-700 rounded-md text-center'>
+                  <div className='flex justify-center gap-x-4'>
+                    <Link to={`/books/details/${book._id}`}>
+                        <h3 className='text-2xl text-yellow-600 border rounded-xl w-8 bg-green-800'>ℹ️</h3>
+                    </Link>
+                    <Link to={`/books/edit/${book._id}`}>
+                      <h3 className='text-2xl bg-yellow-600 rounded-xl'>📝</h3>
+                    </Link>
+                    <Link to={`/books/delete/${book._id}`}>
+                      <h3 className='text-2xl bg-red-600 rounded-xl'>🗑️</h3>
+                    </Link>
+
+                  </div>
+                </td>
+              </tr>
+      ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  )
+}
+
+export default Home

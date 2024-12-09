@@ -1,0 +1,772 @@
+//todo:  'react-icons' npm 
+ import { AiOutlineEdit } from 'react-icons/ai'
+ import { BsInfoCircle } from 'react-icons/bs'
+ import { MdOutlineAddBox, MdOutlineDelete } from ' react-icons/
+ 
+  //* test
+ test('should ', () => {
+  
+ })
+  
+  //todo REACT-ROUTER PROJECT
+ useEffect( ()=>{
+ async function serverData(){
+    
+
+   let res = await fetch('http://localhost:3000/books')
+   let data = await res.json()
+   console.log(data);
+ }
+ serverData()
+}, []);
+
+//! MERN/CRUD PROJECT w/ Tailwind(css-library), MongoDB Compass, Postman, DevDocs;
+//?GIMP, Snipping tool, notepad, freecode camp, sublime text 4, vlc media player, Nodejs, Agent Ransack, sticky notes, install python, react native, and more...
+
+//* index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+//* index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background-color: rgba(251, 251, 248, 0.588);
+}
+#add-link,
+#detail-link,
+#edit-link,
+#delete-link
+{padding: 10px; background-color: rgb(246, 251, 246); border-radius: 10px;}
+
+#add-link{padding-left: 20px; padding-right: 20px;}
+
+
+//* Main.jsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import {BrowserRouter} from 'react-router-dom'
+import './index.css'
+createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
+
+
+//* App.jsx
+import React from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Home from './pages/Home';
+import CreateBooks from './pages/CreateBooks';
+import ShowBook from './pages/ShowBook';
+import EditBook from './pages/EditBook';
+import DeleteBook from './pages/DeleteBook';
+
+
+
+
+
+
+function App() {
+    return (
+    <Routes>
+     <Route path='/' element={<Home />} />      
+     <Route path='/books/create' element={<CreateBooks />} />      
+     <Route path='/books/details/:id' element={<ShowBook />} />      
+     <Route path='/books/edit/:id' element={<EditBook />} />      
+     <Route path='/books/delete/:id' element={<DeleteBook />} />      
+    </Routes>
+  );
+};
+
+export default App;
+
+//* PAGES FOLDER
+//! POST EXAMPLE- Crud(create) 
+import React, { useState } from "react";
+import BackButton from "../components/BackButton";
+import Spinner from "../components/Spinner";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+
+const CreateBooks = () => {
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [publishYear, setPublishYear] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
+    const handleSaveBook = () => {
+        const data = {
+            title,
+            author,
+            publishYear,
+        };
+
+        setLoading(true);
+        fetch('http://localhost:5555/books', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'content-type': 'application/json'}
+        })
+        .then(
+            () => {
+                setLoading(false);
+                navigate('/')
+            })
+            .catch((error) => {
+                setLoading(false);
+                alert('An error happened. Please happened. Please Check Console');
+                console.log(error)
+            })
+            
+        }
+        return (
+        <div className="p-4">
+            <BackButton />
+            <h1 className="text-3xl my-4">Create Book</h1>
+            {loading ? <Spinner /> : ''}
+            <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
+                <div className="my-4">
+                    <label className="text-xl mr-4 text-gray-500">Title</label>
+                    <input type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="border-2 border-gray-500 px-4 py-2 w-full"
+                    />
+                </div>
+                <div className="my-4">
+                    <label className="text-xl mr-4 text-gray-500">Author</label>
+                    <input type="text"
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)}
+                        className="border-2 border-gray-500 px-4 py-2 w-full"
+                    />
+                </div>
+                <div className="my-4">
+                    <label className="text-xl mr-4 text-gray-500">Publish Year</label>
+                    <input type="number"
+                        value={publishYear}
+                        onChange={(e) => setPublishYear(e.target.value)}
+                        className="border-2 border-gray-500 px-4 py-2 w-full"
+                    />
+                </div>
+                <button className="p-2 bg-sky-300 m-8" onClick={handleSaveBook}>
+                    Save
+                </button>
+            </div>
+        </div>
+    )
+}
+//? ! TIMESTAMP 41:47
+export default CreateBooks
+
+//todo: southsides way...industry way - cRud(read) fetch-only
+    //! when dealing with multiple properties...destructure!!
+    useEffect(() => {
+        setLoading(true)
+        fetch('http://localhost:5555/books')
+            .then(
+                async (res) => {
+                    console.log(res);
+                    //! when dealing with multiple properties...destructure!!
+                    // let data = await res.json() 
+                    let { data, count } = await res.json();
+                    console.log(data);
+                    console.log(count)
+                    setBooks(data);
+                    setLoading(false);
+                    console.log(books)
+                })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);
+            })
+    }, []);
+ 
+ //todo: VI'S way
+     useEffect(() => {
+         setLoading(true)
+         fetch('http://localhost:5555/books')
+             .then(
+                 (req) => req.json())
+             .then((response) => {
+                 setBooks(response.data)
+                 setLoading(false)
+             })
+             .catch((error) => {
+                 console.log(error);
+                 setLoading(false);
+             })
+     })         
+
+//todo:goldmouth..way...
+useEffect(() => {
+         setLoading(true);
+         fetch('http://localhost:5555/books')
+         .then((res) => res.json())
+         .then((res) => setBooks(res.data))
+         .then(() => setLoading(false))
+         .catch((err) => console.log(err));
+}, []);
+     console.log(books)
+
+     //todo: coons way
+useEffect(() => {
+         setLoading(true)
+         fetch('http://localhost:5555/books')
+             .then(
+                 async (res) => {
+                     console.log(res);
+                     //! when dealing with multiple properties...destructure!!
+                     // let data = await res.json() 
+                     let { data, count } = await res.json();
+                     console.log(data);
+                     console.log(count)
+                     setBooks(data);
+                     setLoading(false);
+                     console.log(books)
+                 })
+             .catch((error) => {
+                 console.log(error);
+                 setLoading(false);
+             })
+}, []);
+
+//! Edit - crUd(update)
+
+import React, { useState, useEffect } from "react";
+import BackButton from "../components/BackButton";
+import Spinner from "../components/Spinner";
+// import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom'
+
+const EditBook = () => {
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [publishYear, setPublishYear] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const { id } = useParams();
+    useEffect(() => {
+        setLoading(true)
+        fetch(`http://localhost:5555/books/${id}`)
+            .then(async (res) => {
+                console.log(res);
+                //! when dealing with multiple properties...destructure!!
+                let data = await res.json()
+                console.log(data);
+                setAuthor(data.author);
+                setPublishYear(data.publishYear);
+                setTitle(data.title);
+                setLoading(false);
+
+            }).catch((error) => {
+                setLoading(false);
+                alert('An error happened. Please happened. Please Check Console');
+                console.log(error)
+            })
+    }, [])
+    const handleEditBook = () => {
+        const data = {
+            title,
+            author,
+            publishYear,
+        };
+
+        setLoading(true);
+        fetch(`http://localhost:5555/books/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: { 'content-type': 'application/json' }
+        })
+            .then(
+                () => {
+                    setLoading(false);
+                    navigate('/')
+                })
+            .catch((error) => {
+                setLoading(false);
+                alert('An error happened. Please happened. Please Check Console');
+                console.log(error)
+            })
+
+    }
+    return (
+        <div className="p-4">
+            <BackButton />
+            <h1 className="text-3xl my-4">Edit Book</h1>
+            {loading ? <Spinner /> : ''}
+            <div className="flex flex-col border-2 border-sky-400 rounded-xl p-4 mx-auto">
+                <div className="my-4">
+                    <label className="text-xl mr-4 text-gray-500">Title</label>
+                    <input type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="border-2 border-gray-500 px-4 py-2 w-full"
+                    />
+                </div>
+                <div className="my-4">
+                    <label className="text-xl mr-4 text-gray-500">Author</label>
+                    <input type="text"
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)}
+                        className="border-2 border-gray-500 px-4 py-2 w-full"
+                    />
+                </div>
+                <div className="my-4">
+                    <label className="text-xl mr-4 text-gray-500">Publish Year</label>
+                    <input type="number"
+                        value={publishYear}
+                        onChange={(e) => setPublishYear(e.target.value)}
+                        className="border-2 border-gray-500 px-4 py-2 w-full"
+                    />
+                </div>
+                <button className="p-2 bg-sky-300 m-8" onClick={handleEditBook}>
+                    Save
+                </button>
+            </div>
+        </div>
+    )
+}
+
+export default EditBook
+
+//! Delete -cruD(Delete)
+
+import React, { useState } from "react";
+import BackButton from "../components/BackButton";
+import Spinner from "../components/Spinner";
+// import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
+
+const DeleteBook = () => {
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const handleDeleteBook = () => {
+        setLoading(true);
+        fetch(`http://localhost:5555/books/${id}`, {
+            method: 'DELETE'
+        })
+            .then(
+                () => {
+                    setLoading(false);
+                    navigate('/')
+                })
+            .catch((error) => {
+                setLoading(false);
+                alert('An error happened. Please happened. Please Check Console');
+                console.log(error)
+            })
+
+    }
+
+    return (
+        <div className="p-4 text-center test-sm">
+            <BackButton />
+            <div className="my-10">
+                <h1 className="text-3xl my-5">Delete Book</h1>
+                {loading ? <Spinner /> : ''}
+                <div className="flex flex-col border-2 border-sky-400 rounded-xl p-4 mx-auto ">
+                    <h3>ARE YOU SURE YOU WANT TO DELETE THIS BOOK</h3>
+
+                    <button
+                        className="p-4 bg-red-600 text-white m-1 w-full"
+                        onClick={handleDeleteBook}
+                    >⚔️ YES, DELETE IT ⚔️</button>
+
+                </div>
+
+            </div>
+        </div>
+    )
+}
+
+export default DeleteBook
+
+//todo : show one only...
+
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import BackButton from "../components/BackButton";
+import Spinner from "../components/Spinner";
+
+const ShowBook = () => {
+    const [book, setBook] = useState({});
+    const [loading, setLoading] = useState(false);
+    const { id } = useParams();
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`http://localhost:5555/books/${id}`)
+            .then(
+                async (res) => {
+                    console.log(res);
+                    //! when dealing with multiple properties...destructure!!
+                    let data = await res.json() 
+                    // let { data, count } = await res.json();
+                    console.log(data);
+                    setBook(data);
+                    setLoading(false);
+                    console.log(book)
+                })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);
+            })
+    }, [])
+    return(
+        <div className="p-4">
+            <BackButton />
+            <h1 className="text-3xl my-4">Show Book</h1>
+            {loading ?(
+                <Spinner />
+            ):(
+                <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
+                    <div className="my-4 flex">
+                        <span className="text-xl mr-4 text-gray-500"><span className=" ">🪪</span> Id</span>
+                        <span>{book._id}</span>
+                    </div>
+                    <div className="my-4 flex">
+                        <p className="text-xl mr-4 text-gray-500"><span className=" ">📔</span> Title</p>
+                        <span>{book.title}</span>
+                    </div>
+                    <div className="my-4 flex">
+                        <p className="text-xl mr-4 text-gray-500"><span>👤</span> Author</p>
+                        <span>{book.author}</span>
+                    </div>
+                    <div className="my-4 flex ">
+                        <p className="text-xl mr-4 text-gray-500"><span>©</span> Publish Year</p>
+                        <span>{book.publishYear}</span>
+                    </div>
+                    
+                    <div className="my-4 flex">
+                        <p className="text-xl mr-4 text-gray-500"><span>⏳</span> Create Time</p>
+                        <span>{new Date(book.createdAt).toString()}</span>
+                    </div>
+                    <div className="my-4 flex">
+                        <p className="text-xl mr-4 text-gray-500"><span>⌚</span> Last Update Time</p>
+                        <span>{new Date(book.updatedAt).toString()}</span>
+                    </div>
+                </div>
+            )}
+        </div>
+    )
+}
+
+export default ShowBook
+
+//* HOME FOLDER
+
+//! MODAL
+import React from "react";
+
+const BookModal = ({ book, onClose }) => {
+    return (
+        <div className="fixed bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center" onClick={onClose}>
+            <div
+                onClick={(event) => event.stopPropagation()}
+                className="w-[600px] max-w-full h-[400px] bg-white text-black rounded-xl p-4 flex flex-col relative"
+            >
+                <span
+                    className="absolute right-6 top-6 text-3xl cursor-pointer"
+                    onClick={onClose}>❌</span>
+                <h2 className="w-fit px-4 py-1 bg-red-300 rounded-lg">
+                    {book.publishYear}
+                </h2>
+                <h4 className="my-2 text-gray-500">{book._id}</h4>
+                <div className="flex justify-start items-center gap-x-2">
+                    {/*//!React-icon <PiBookOpenTextLight className="text-red-300 text-2xl" /> */}
+                    <span className="text-red-300 text-2xl">📙</span>
+                    <h2 className="my-1">{book.title}</h2>
+                </div>
+                <div className="flex justify-start items-center gap-x-2">
+                    {/*//!React-icon <PiBookOpenTextLight className="text-red-300 text-2xl" /> */}
+                    <span className="text-red-300 text-2xl">👤</span>
+                    <h2 className="my-1">{book.author}</h2>
+                </div>
+                <p className="mt-4">Anything You want to show</p>
+                <p className="my-2">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi labore harum nam? Dolor et quo, minus sapiente, dolorem, placeat magni alias quae perspiciatis pariatur nobis vero libero earum sit. Similique?
+                </p>
+            </div>
+        </div>
+    )
+}
+
+export default BookModal
+
+//! CARD
+
+import react from "react";
+import { Link } from 'react-router-dom';
+// import { AiOutlineEdit } from 'react-icons/ai'
+// import { BsInfoCircle } from 'react-icons/bs'
+// import { MdOutlineAddBox, MdOutlineDelete } from ' react-icons/md'
+import BookSingleCard from "./BookSingleCard";
+
+const BooksCard = ({ books }) => {
+    return (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {books.map((item) => (
+                <BookSingleCard key={item._id} book={item} />
+            ))}
+        </div>
+    )
+}
+export default BooksCard
+
+//! Single Card w/ Modal set-up
+
+import React, { useState } from "react";
+import { Link } from 'react-router-dom'
+//! import react-icons
+// import { AiOutlineEdit } from 'react-icons/ai'
+// import { BsInfoCircle } from 'react-icons/bs'
+// import {PiBookOpenTextLight} from 'react-icons/pi'
+import BookModal from "./BookModal";
+
+const BookSingleCard = ({ book }) => {
+    //!to show modal
+    const [showModal, setShowModal] = useState(false);
+    
+    return (
+        <div className="border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl">
+            <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-300 rounded-lg">
+                {book.publishYear}
+            </h2>
+            <h4 className="my-2 text-gray-500">{book._id}</h4>
+            <div className="flex justify-start items-center gap-x-2">
+                {/*//!React-icon <PiBookOpenTextLight className="text-red-300 text-2xl" /> */}
+                <span className="text-red-300 text-2xl">📙</span>
+                <h2 className="my-1">{book.title}</h2>
+            </div>
+            <div className="flex justify-start items-center gap-x-2">
+                {/*//!React-icon <PiBookOpenTextLight className="text-red-300 text-2xl" /> */}
+                <span className="text-red-300 text-2xl">🪪</span>
+                <h2 className="my-1">{book.author}</h2>
+            </div>
+            <div className="flex justify-between items-center gap-x-2 mt-4 p-4">
+                //! to see modal via clicking on button
+                <span
+                onClick={()=> setShowModal(true)}
+                >📑</span>
+                <Link to={`/books/details/${book._id}`}>📖</Link>
+                <Link to={`/books/edit/${book._id}`}>✍️</Link>
+                <Link to={`/books/delete/${book._id}`}>🚮</Link>
+            </div>
+            //! to show Modal 
+            {showModal && (
+                <BookModal book={book} onClose={()=> setShowModal(false)} />
+            )}
+        </div>
+
+    )
+}
+
+export default BookSingleCard
+
+//! Table
+import react from "react";
+import { Link } from 'react-router-dom';
+import { AiOutlineEdit } from 'react-icons/ai'
+import { BsInfoCircle } from 'react-icons/bs'
+import { MdOutlineAddBox, MdOutlineDelete } from ' react-icons/md'
+
+const BooksTable = ({ books }) => {
+    return (
+        <table className="w-full border-separate border-spacing-2">
+            <thead>
+                <tr>
+                    <th className="border border-slate-600 rounded-md">No</th>
+                    <th className="border border-slate-600 rounded-md">Title</th>
+                    {/* //! hidden in mobile and tablet sizes */}
+                    <th className="border border-slate-600 rounded-md max-md:hidden">Author</th>
+                    <th className="border border-slate-600 rounded-md">Publish Year</th>
+                    <th className="border border-slate-600 rounded-md">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {books.map((book, index) => (
+                    <tr key={book._id} className="h-8">
+                        <td className="border border-slate-700 rounded-md text-center">{index + 1}</td>
+                        <td className="border border-slate-700 rounded-md text-center">{book.title}</td>
+                        <td className="border border-slate-700 rounded-md text-center">{book.author}</td>
+                        <td className="border border-slate-700 rounded-md text-center">{book.publishYear}</td>
+                        <td className="border border-slate-700 rounded-md text-center">
+                            <div className="flex justify-center gap-x-4">
+                                {/* //! details */}
+                                <Link to={`/books/details/${book._id}`}><div className="text-2xl text-green-800 p-4 br-180" id='detail-link'>📖</div></Link>
+
+                                {/* //! edit */}
+                                <Link to={`/books/edit/${book._id}`}><div className="text-2xl text-yellow-600 p-4 br-180" id='edit-link'>✍️</div></Link>
+
+                                {/*//! Delete  */}
+                                <Link to={`/books/delete/${book._id}`}><div className="text-2xl text-red-600 p-4 br-180" id='delete-link'>🚮</div></Link>
+                            </div>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    )
+}
+export default BooksTable
+
+//* COMPONENTS FOLDER
+//! BackButton
+
+import { Link} from 'react-router-dom'
+import { BsArrowLeft } from 'react-icons/bs'
+const BackButton = ({ destination = '/'}) => {
+    return (
+        <div className="flex">
+            <Link to={destination}
+            className='bg-sky-500 text-white px-10 py-5 rounded-lg w-fit'><p className=''>👈</p></Link>
+        </div>
+    )
+}
+
+export default BackButton
+
+//! Spinner
+
+import React from "react";
+//! timestamp video:30:57
+const Spinner = () => {
+    return(
+        <div className="animate-ping w-16 h-16 m-8 rounded-full bg-sky-600"></div>
+    )
+}
+
+export default Spinner
+
+//! todo list w/local storage
+
+//? html elements
+const input = document.querySelector('input')
+const button = document.querySelector('button')
+const ul = document.querySelector('ul')
+const lightSwitch = document.getElementById('light-switch')
+const nav = document.querySelector('nav')
+
+//? empty array to place inputs in...
+let inputArr = [];
+
+//? lightSwitch
+let isLightMode;
+lightSwitch.src = "./image/icon-moon.svg"
+nav.style.backgroundImage = "url(./image/bg-mobile-light.jpg)"
+
+//* User should be able to write a todo
+//* and when he/she presses ENTER
+//* store the todo and display it
+//* when clear list is pressed
+//* remove data
+//****************addEventListenerS*****************
+//!WINDOW
+//?Window.localStorage Read only
+//?Returns a reference to the local storage object used to store data that may only be accessed by the origin that created it.
+//? when my page loads...console.log(LocalStorage)
+//! The load event is fired when the whole page has loaded, including all dependent resources such as stylesheets, scripts, iframes, and images. This is in contrast to DOMContentLoaded, which is fired as soon as the page DOM has been loaded, without waiting for resources to finish loading.
+window.addEventListener('load', (e) => {
+    console.log('HEY! MY PAGE IS LOADED')
+    //! The JSON.parse() static method parses a JSON string, constructing the JavaScript value or object described by the string. An optional reviver function can be provided to perform a transformation on the resulting object before it is returned.
+    //! The localStorage read-only property of the window interface allows you to access a Storage object for the Document's origin; the stored data is saved across browser sessions
+    //! localStorage is similar to sessionStorage, except that while localStorage data has no expiration time, sessionStorage data gets cleared when the page session ends — that is, when the page is closed. 
+    //!(localStorage data for a document loaded in a "private browsing" or "incognito" session is cleared when the last "private" tab is closed.)
+    //! Value
+    //! A Storage object which can be used to access the current origin's local storage space
+    const localStorageList = JSON.parse(localStorage.getItem('list'))
+    //? check if there is any local storage
+    if (!localStorageList){
+        //! this only triggers when localStorage doesnt exist...
+        return;
+    };
+//! iterating thru our localStorage and running our display function forEach item
+    localStorageList.forEach((item) => {displayItems(item)})
+    //?see: displayItems(item) function
+});
+
+//!INPUT
+//todo when the user presses 'Enter' add todo item...
+input.addEventListener('keypress', handleKeyPress);
+function handleKeyPress(e) {
+    //? todo Destructing the properties i am using
+    //!value
+    //!The input control's value. When specified in the HTML, this is the initial value, and from then on it can be altered or retrieved at any time using JavaScript to access the respective HTMLInputElement object's value property. The value attribute is always optional, though should be considered mandatory for checkbox, radio, and hidden.
+    const userInput = input.value;
+    const { key } = e;
+    console.log(key)
+    if (key === 'Enter'){
+        // do stuff with our input
+    // JSON.stringify
+    // JSON.parse
+    inputArr.push(input.value)
+    displayItems(userInput)
+    localStorage.setItem('list', JSON.stringify(inputArr));
+    input.value = '';
+    //?display our input
+    }
+}
+
+function displayItems(item) {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ul.append(li);
+    //! take dot away....
+    //? li.style.listStyle = 'none';
+}
+
+button.addEventListener('click', () => {
+    //! RESETING/CLEARING LIST
+    inputArr = [];
+    ul.replaceChildren(inputArr)
+    localStorage.clear()
+})
+
+//! lightswitch
+//? in CSS make a new set of root variables,
+    //? named the same as your normal ones
+//* JS declare a variable --- let isDarkMode;
+    //* in the click event isDarkMode = !isDarkMode
+    //* document.documentElement.classlist.toggle('dark-mode')
+    //? if (isDarkMode){
+        //! to change background-image
+        //? target the document.body.style.backgroundImage = "url(......)"
+        //! sun/moon
+        //? target the img => .src = "...."
+        //? } else {
+            //! to change background-image
+        //? target the document.body.style.backgroundImage = "url(......)"
+        //! sun/moon
+        //? target the img => .src = "...."
+        //? }
+lightSwitch.addEventListener('click', () => {
+    isLightMode = !isLightMode
+    document.documentElement.classList.toggle('dark-mode')
+    if (isLightMode) {
+        lightSwitch.src = "./image/icon-sun.svg"
+        nav.style.backgroundImage = "url(./image/bg-mobile-dark.jpg)"
+    } else{
+        lightSwitch.src = "./image/icon-moon.svg"
+        nav.style.backgroundImage = "url(./image/bg-mobile-light.jpg)"
+    }
+})

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--! get an image icon....shopping cart  -->
+    <header class="flex" id="top-head">
+        <div class="flex">
+            <h1 id="head-name-one">quality<i id="head-name-two">CART</i></h1>
+            <img src="./images/icon-cart.svg" alt="cart-icon" id="shopping-cart-icon">
+        </div>
+    </header>
+    <hr>
+    <!--! **************************************************** -->
+    <aside class="" id="nav-bar">
+        <div id="close-btn"><img src="./images/icon-close.svg" alt="close-icon" id="close-icon"></div>
+        <h2 class="aside-objs" id="home">LOG-IN</h2>
+        <h2 class="aside-objs" id="products">PRODUCTS</h2>
+        <!-- <h2 class="aside-objs" id="contact">CONTACT</h2> -->
+        <h2 class="aside-objs" id="cart">CART</h2>
+        <h2 class="aside-objs" id="logout">LOG-OUT</h2>
+    </aside>
+    <!--! ****************************************************** -->
+    <section id="loginPage">
+
+        <h2>LOG-IN</h2>
+        <form id="log-in">
+            <label for="username">USERNAME:</label><br>
+            <input type="text" id="username" name="username" placeholder="TYPE HERE" autocomplete="username"><br>
+            <label for="pwd">PASSWORD:</label><br>
+            <input type="password" id="pwd" name="pwd" placeholder="TYPE HERE" autocomplete="current-password"><br>
+            <label for="email">EMAIL:</label><br>
+            <input type="text" id="email" name="email" placeholder="TYPE HERE"><br><br>
+            
+            <button type="button"  id="submitBTN">SUBMIT</button>
+        </form>
+    </section>
+
+    <article id="productPage">
+        <div class="flex" id="product-head">
+            <h2>PRODUCTS</h2>
+            <img src="./images/icon-menu.svg" alt="menu-icon" width="30px" id="menu">
+        </div>
+
+        <form id="search">
+            <label for="searchbar">SEARCH:</label><br>
+            <select name="searchbar" id="searchbar">
+                <option id="all-items" value="all-items">ALL ITEMS</option>
+                <option id="women-clothing" value="women's clothing">WOMEN'S CLOTHING</option>
+                <option id="men-clothing" value="men's clothing">MEN'S CLOTHING</option>
+                <option id="jewelery" value="jewelery">JEWELERY</option>
+                <option id="electronics" value="electronics">ELECTRONICS</option>
+            </select>
+            <button type="submit" id="searchBTN">SEARCH</button>
+        </form>
+        <section class="products"></section>
+
+        
+        <section class="cart"><h2 id="cartname">CART</h2></section>
+
+        <!-- <h2>CONTACT</h2>
+        <section class="contact"></section> -->
+    </article>
+
+
+
+    <!-- <section class="container" id="c-section">
+        <h2 class="idText">ID:</h2>
+        <h3 class="titleText">TITLE:</h3>
+        <h4 class="priceText">PRICE:</h4>
+        <h4 class="categoryText">CATEGORY:</h4>
+        <h4 class="bodyHead">DESCRIPTION:</h4>
+        <p class="bodyText"></p>
+        <img src="./images/image-avatar.png" alt="avatar" id="avatar">
+    </section> -->
+
+
+
+    <script src="test.js"></script>
+</body>
+
+</html>

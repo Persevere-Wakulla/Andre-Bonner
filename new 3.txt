@@ -1,0 +1,19 @@
+
+export default function Menu({ budget }) {
+  let priceFilter = items.dishes.filter((item, index) => {
+    if (item.price < budget) {
+      return item
+    }
+  }).map((item, index) => {
+    return <Dish key={index} data={item} />
+  })
+
+  console.log(priceFilter)
+
+  return <section>
+
+    {/* render */}
+    {/* one prop, multiple props */}
+    {/* <Dish data={items.dishes[0]} /> */}
+    {priceFilter}
+  </section>;

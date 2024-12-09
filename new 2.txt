@@ -1,0 +1,46 @@
+
+/* ! Slider CSS */
+#rangeContainer {
+  display: flex;
+  justify-content: space-between;
+}
+#characterLength {
+  padding-top: 5px;
+}
+.slidecontainer {
+    max-width: 600px;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 300px;
+    height: 10px;
+    border-radius: 5px;
+    background:#8af08a;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity 2s;
+    margin-bottom: 20px;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #c1c3c1;
+    cursor: pointer;
+  }
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #0a0b0b;
+    cursor: pointer;
+  }
+
+  #demo {
+    color: #8af08a;
+    font-size: 20px;
+  }

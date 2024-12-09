@@ -1,0 +1,39 @@
+import { useState, useEffect } from "react";
+
+
+export default function Input() {
+
+  const [rows, setRows] = useState('');
+  const [columns, setColums] = useState('');
+  const [submit, setSubmit] = useState({
+    row: rows,
+    col: columns
+  });
+
+
+  return (
+  <div>
+
+    <form action="">
+      <label htmlFor="">
+        Rows:
+        <input type="number" value={rows} onChange={(e) => setRows(Number(e.target.value))} placeholder="Number Of Rows" />
+      </label>
+      <label htmlFor="">
+        Columns:
+        <input type="number" value={columns} onChange={(e) => setColums(Number(e.target.value))} placeholder="Number Of Columns" />
+      </label>
+      <button
+        type="submit"
+        onClick={(e) => {
+            e.preventDefault();
+            setSubmit({ row: rows, col: columns });
+        }}
+        >
+        Submit
+      </button>
+    </form>
+    <Graph row={submit.row} col={submit.col}/>
+          </div>
+  );
+};

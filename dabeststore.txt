@@ -1,0 +1,30 @@
+const handleLogout = () => {
+        if(!logout){
+            setUser(!user)
+        }
+    }
+	
+	<img onClick={() => setNav(!nav)} src="/src/assets/icons/icon-hamburger.svg" alt="icon" className="ham-image" />
+	
+	
+	const handleLogin = () => {
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value
+        const myUser = allUsers.users.find((user) => {
+            if (user.username === username && user.password === password) {
+                return user
+            }
+        })
+        setUser(myUser)
+    }
+	
+	
+	useEffect(() => {
+
+        //! To see Nav in mobile view 
+
+        if (window.innerWidth > 700) {
+            setHamburger(false)
+            setNav(true)
+        }
+    }, [window.innerWidth])

@@ -1,0 +1,33 @@
+a{
+    /* display: grid; */
+    align-items: center;
+    text-align: center;
+    color: rgb(38, 1, 72), rgb(112, 194, 84);
+    /* border: 2px solid black; */
+    padding: 1em 2em;
+    background:  linear-gradient(rgba(195, 146, 235, 1.0), rgba(195, 146, 235, 0.0));
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-radius: 50%; */
+    background-size: 100% 100%;
+    filter: opacity(1);
+    /* text-decoration: none; */
+    /* width: 200px; */
+    /* height: 50px; */
+    font-size: 30px;
+    /* transition-behavior: allow-discrete; */
+    transition: all 2s;
+}
+
+a:hover{
+    color: rgb(112, 194, 84);
+    background:  linear-gradient(rgba(195, 146, 235, 0.0), rgba(195, 146, 235, 1));
+    filter: opacity(0);
+    /* background-color: blue; */
+    /* width: 400px; */
+    /* height: 100px; */
+    font-size: 60px;
+    /* border-radius: 50%; */
+    /* background-size: 0% 0%; */
+    /* background:  linear-gradient(rgba(215, 76, 34, 0.5 ), rgba(195, 146, 235, 0.5)); */
+}

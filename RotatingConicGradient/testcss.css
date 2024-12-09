@@ -1,0 +1,54 @@
+body{
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+#testBox{
+    /* border: 2px solid black; */
+    border-radius: 50%;
+    background: repeating-conic-gradient(red,orange,black 8%);
+    width: 400px;
+    height: 400px;
+    /* transition: rotate(360deg); */
+    /* transition-duration: 3s; */
+    /* transition-property: rotate(360deg); */
+    animation: rotate .2s linear infinite ;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    /* animation-duration: 3s;
+    animation-iteration-count: infinite; */
+}
+
+@keyframes rotate1{
+    from{
+        background: repeating-conic-gradient(red,orange,yellow,black 8%);
+    }
+    to{
+        background: repeating-conic-gradient(yellow,black,red,orange 8%);
+    }
+}
+
+@keyframes rotate {
+    0% {
+      /* rotate: 0deg; */
+      background: repeating-conic-gradient(red,orange,yellow,black 8%);
+    }
+    25% {
+      /* rotate: 360deg; */
+      background: repeating-conic-gradient(orange,yellow,black,red 8%);
+    }
+    50% {
+      /* rotate: 360deg; */
+      background: repeating-conic-gradient(yellow,black,red,orange 8%);
+    }
+    75% {
+      /* rotate: 360deg; */
+      background: repeating-conic-gradient(black,red,orange ,yellow 8%);
+    }
+    100%{
+        background: repeating-conic-gradient(red,orange,yellow,black 8%);
+    }
+
+  }

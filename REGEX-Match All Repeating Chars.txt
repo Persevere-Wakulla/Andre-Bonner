@@ -1,0 +1,31 @@
+The regular expression /([^])\1+/g is designed to capture repeated characters in a string. Let's break it down to understand how it works and why it behaves the way it does on the word "dermaatoglyphics".
+
+Explanation of the Regular Expression:
+([^]): This part is a capturing group that matches any single character, except the closing bracket ]. It essentially matches any character.
+\1+: This refers to a backreference to the first capturing group ([^]). The \1 part tells the regex engine to match the same character that was captured earlier. The + after \1 means that it should match one or more occurrences of this same character.
+Step-by-step breakdown:
+In the word "dermaatoglyphics":
+
+The regex first looks for any character and stores it in the first capturing group ([^]).
+Then it looks for one or more consecutive repetitions of that same character, which is what \1+ does.
+Let's see how this works with the word "dermaatoglyphics":
+
+d: Not repeated, so no match.
+e: Not repeated, so no match.
+r: Not repeated, so no match.
+m: Not repeated, so no match.
+a: The first a is matched, then the second a is found, which is a repetition, so this is a match (aa).
+t: Not repeated, so no match.
+o: Not repeated, so no match.
+g: Not repeated, so no match.
+l: Not repeated, so no match.
+y: Not repeated, so no match.
+p: Not repeated, so no match.
+h: Not repeated, so no match.
+i: Not repeated, so no match.
+c: Not repeated, so no match.
+s: Not repeated, so no match.
+Why it matches "aa" and not other sequences:
+The regex specifically looks for repeating consecutive characters. So when the a appears twice in a row, it successfully matches that part as aa, because it satisfies the condition of a character followed by one or more repetitions of the same character.
+In summary, /([^])\1+/g matches consecutive repeated characters, and in the word "dermaatoglyphics," the sequence "aa" is the only repeated consecutive pair, which is why it is the only match.
+

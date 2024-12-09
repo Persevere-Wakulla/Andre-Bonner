@@ -1,0 +1,25 @@
+{
+    "date": [{
+        "day": "monday",
+        "mood": "happy"
+    },
+    {
+        "day": "tuesday",
+        "mood": "sad"
+    },
+    {
+        "day": "wednesday",
+        "mood": "angry"
+    },
+    {
+        "day": "thursday",
+        "mood": "hungry"
+    },
+    {
+        "day": "friday",
+        "mood": "party"
+    }
+    ]
+    
+    
+}

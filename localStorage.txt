@@ -1,0 +1,11 @@
+     
+	 
+	 const [highScore, setHighScore] = useState(0);
+
+ 
+ useEffect(() => {
+       if (score > JSON.parse(localStorage.getItem('highScore'))) {
+            setHighScore(score);
+            localStorage.setItem('highScore', JSON.stringify(highScore))
+        }
+    }, [score]);

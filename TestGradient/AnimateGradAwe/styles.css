@@ -1,0 +1,157 @@
+body{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100vh
+}
+@property --a{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value:40deg;
+}
+@property --a1{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value:20deg;
+}
+@property --l{
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 10%;
+}
+@property --c{
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgb(68, 22, 108)
+}
+@property --b{
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgb(125, 88, 189);
+}
+@property --d{
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgb(76, 52, 128);
+}
+.container{
+    display: grid;
+    /* gap: 1em; */
+    /* grid-template-columns: repeat(10,minmax(130px, 70%)); */
+}
+.box{
+    /* width: 65px; */
+    font-family: Segoe Script;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 1em 2em;
+    color:azure;
+    scale: 1;
+    border-radius: 50% 5px 50% 5px;
+    transition: --a 0.8s 0.1s, --l 0.8s, --c 1.2s, font-size 1.2s, border-radius 1.2s, color 1.8s, scale 1.5s;
+    background: linear-gradient(var(--a), var(--c) var(--l), rgb(107, 107, 185), var(--c) calc(100% - var(--l)));
+}
+.box:hover{
+    --a: 720deg;
+    --l: 10%;
+    --c: rgb(14, 51, 214);
+    /* font-size: 22px; */
+    scale: 1.3;
+    border-radius: 5px 50% 5px 50%;
+    color:black;
+}
+.box1{
+    font-family: Segoe Script;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 1em 2em;
+    color:azure;
+    border-radius: 5px 50% 5px 50%;
+    background: repeating-conic-gradient(from 45deg at 50% 50%, var(--d) 0deg var(--a1), var(--b) 10deg 20deg, var(--c) 20deg var(--a) );
+    transition: --c 2s, --b 2s, --d 2s, --a 2s, --a1 2s, scale 2s, border-radius 2s, font-weight 2s;
+}
+.box1:hover{
+    font-weight: 800;
+    --c: rgb(68, 19, 105);
+    --b: rgb(76, 52, 128);
+    --d: rgb(125, 88, 189);
+    --a: 18deg;
+    --a1: 1deg;
+    scale: 1.3;
+    border-radius: 50% 5px 50% 5px;
+}
+@property --g{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+@property --g1{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 15deg;
+}
+@property --g2{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 30deg;
+}
+@property --g3{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 45deg;
+}
+@property --g4{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 60deg;
+}
+@property --p1{
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 10%;
+}
+@property --p2{
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 20%;
+}
+.box2{
+    /* width: 100px; */
+    /* height: 100px; */
+    font-family: Segoe Script;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 1em 2em;
+    color:azure;
+    border-radius: 50% 5px 50% 5px;
+    background: repeating-conic-gradient(from 45deg at var(--p1) var(--p2), rgb(46, 2, 108) var(--g) var(--g1), rgb(75, 19, 152) var(--g1) var(--g2), rgb(98, 0, 255) var(--g2) var(--g3), rgb(119, 0, 255) var(--g3) var(--g4));
+    transition: --g 2s, --g1 2s, --g2 2s, --g3 2s, --g4 2s, --p1 2s, --p2 2s, border-radius 2s, scale 2s, font-weight 2s;
+}
+.box2:hover{
+    font-weight: 800;
+    --g: 720deg;
+    --g1: 735deg;
+    --g2: 750deg;
+    --g3: 765deg;
+    --g4: 780deg;
+    --p1: 90%;
+    --p2: 80%;
+    border-radius: 5px 50% 5px 50%;
+    scale: 1.3;
+}
+img{
+    scale: .2;
+    background: hsl(192, 100%, 67%), hsl(280, 87%, 65%)
+    /* animation: sizer 2s infinite; */
+}
+@keyframes sizer{
+    from{
+        scale: 0;
+    }
+    50%{
+        scale: .2;
+    }
+    to{
+        scale: 0;
+    }
+}

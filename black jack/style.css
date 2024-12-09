@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 15fr 1fr;
+    background: linear-gradient(rgb(25, 24, 24), purple)
+}
+
+h1 {
+    justify-self: center;
+    align-self: end;
+    padding-top: 1em;
+    color: red;
+    font-size: 3em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.playing-board {
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    width: 60%;
+    height: 65%;
+    border: 10px dotted;
+    border-color: red blue green purple;
+    background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, rgba(0, 255, 0, .8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, .8), rgba(0, 0, 255, 0) 70.71%);
+    grid-template-rows: 1fr 1fr 1fr;
+    background: repeating-conic-gradient(gold,purple 10%);
+    
+}
+
+.cards {
+    width: 15%;
+    
+}
+
+.player-hand {
+    background: repeating-linear-gradient(black ,lime);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    
+}
+#winning-status{
+    color: rgb(255, 0, 89);
+   border: 20px groove;
+    border-color: red blue  orangered;
+}
+
+.dealer {
+    background: repeating-linear-gradient(lime,green );
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+#deck{
+    margin: 0 auto;
+    
+    
+}
+
+.flex{
+    display: flex;
+}
+
+.dealer img {
+    display: grid;
+    width: 7em;
+    height: 12em;
+    
+}
+#deal{
+    width: 10rem;
+    position: relative;
+    bottom: 2rem;
+    left: 15rem;
+    
+}
+#play-again{
+    display: none;
+    position: relative;
+    bottom: 2rem;
+    width: 10rem;
+    left: 15rem;
+    
+}
+#hit-me{
+    display: none;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    background: repeating-linear-gradient(purple,red );
+    color: yellow;
+}
+#stay{
+    display: none;
+    position: absolute;
+    bottom: 2rem;
+    width: 5rem;
+    left: 1rem;
+    color: yellow;
+    background: repeating-linear-gradient(red,purple );
+}
+
+.computer-hand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    background: repeating-linear-gradient(green,black);
+  
+ 
+    
+}
+
+.button-container {
+    position: relative;
+    justify-self: center;
+    align-self: center;
+    padding-bottom: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+button {
+    padding: 1rem;
+    border-radius: 10%;
+    background: repeating-linear-gradient(rgb(219, 198, 8),rgb(215, 94, 94));
+color: blue;
+
+}
+
+button:hover {
+    cursor: crosshair;
+    color: blue;
+    background-color: blue;
+    font-size: 20px;
+}  
+
+body{
+    /* background: -webkit-repeating-radial-gradient(orange,red,yellow,pink 45% ); */
+    /* background-repeat: no-repeat; */
+    /* height: 100vh; */
+    animation-name: background;
+    animation-duration: 5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes background {
+    10% {
+        background: -webkit-repeating-radial-gradient(purple,black,red,white 20% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    15% {
+        background: -webkit-repeating-radial-gradient(purple,black,white,blue 25% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    20% {
+        background: -webkit-repeating-radial-gradient(black,purple,gold,white 30% );
+        /* background-repeat: no-repeat; */
+        height: 100vh;
+    }
+    25% {
+        background: -webkit-repeating-radial-gradient(black,purple,red,white 10% );
+        /* background-repeat: no-repeat; */
+        height: 100vh;
+    }
+    30% {
+        background: -webkit-repeating-radial-gradient(black,purple,white,gold 20% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    35% { 
+        background: -webkit-repeating-radial-gradient(black,purple,gold,white 25% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    40% {
+        background: -webkit-repeating-radial-gradient(purple,black,white 30% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    50% {
+        background: -webkit-repeating-radial-gradient(purple,black,red,white 10% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    60% {
+        background: -webkit-repeating-radial-gradient(purple,black,gold,white 20% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    70% {
+        background: -webkit-repeating-radial-gradient(black,purple,red,white 25% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    80% {
+        background: -webkit-repeating-radial-gradient(purple,black,gold,white 30% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    90% {
+        background: -webkit-repeating-radial-gradient(black,purple,white 10% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    100% {
+        background: -webkit-repeating-radial-gradient(black,purple,gold,white 25% );
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+}
+
+.glow {
+    font-size: 50px;
+    color: peru;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  @-webkit-keyframes glow {
+    from {
+      text-shadow:  0 100px 4px rgb(176, 96, 176), 0 10px  5px rgb(0, 255, 157);
+    }
+    
+    to { 
+    text-shadow:  0 10px 5px rgb(121, 7, 117),  0  100px 3px rgb(228, 217, 5);
+    }
+  } 
+
+.glowa {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    animation: glowa 1s ease-in-out infinite alternate;
+  }
+  @-webkit-keyframes glowa {
+    from {
+      text-shadow:  0  4px rgb(248, 246, 246), 0   5px rgb(12, 12, 12)
+    }
+    
+    to { 
+    text-shadow:  0 0 5px rgb(12, 12, 12),  0  0 30px rgb(248, 247, 247);
+    }
+  } 

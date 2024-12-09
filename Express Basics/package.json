@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "name": "express-basics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "Dre the Dev",
+  "license": "ISC",
+  "description": ""
+}

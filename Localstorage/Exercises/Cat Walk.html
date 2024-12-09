@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://www.teaching-materials.org/_deprecated/storage/catwalk -->
+<html>
+  <link type="text/css" rel="stylesheet" id="dark-mode-custom-link" /><link
+    type="text/css"
+    rel="stylesheet"
+    id="dark-mode-general-link"
+  /><style lang="en" type="text/css" id="dark-mode-custom-style"></style
+  ><style lang="en" type="text/css" id="dark-mode-native-style"></style
+  ><style lang="en" type="text/css" id="dark-mode-native-sheet"></style
+  ><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Cat Walk</title>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1173.0" data-gr-ext-installed="">
+    <img
+      style="position: absolute; left: 50px"
+      src="./Cat Walk_files/cat.gif"
+    />
+
+    <script>
+      var img = document.getElementsByTagName('img')[0];
+
+      img.style.left = '0px';
+      var walkForwards = true;
+
+      function catWalk() {
+        var currentLeft = parseInt(img.style.left);
+
+        if (walkForwards && currentLeft > window.innerWidth - img.width) {
+          walkForwards = false;
+        }
+        if (!walkForwards && currentLeft <= 0) {
+          walkForwards = true;
+        }
+
+        if (walkForwards) {
+          img.style.left = currentLeft + 10 + 'px';
+        } else {
+          img.style.left = currentLeft - 10 + 'px';
+        }
+      }
+      window.setInterval(catWalk, 50);
+    </script>
+  </body>
+</html>

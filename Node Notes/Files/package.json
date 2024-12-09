@@ -1,0 +1,13 @@
+{
+  "name": "node-notes",
+  "version": "1.0.0",
+  "description": "Notes for Node",
+  "main": "index.js",
+  
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MR Harper",
+  "license": "ISC"
+}

@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "66d9b0d951120d34a1547efe"
+  },
+  "title": "Laws of Human Nature",
+  "author": "Robert Greene",
+  "publishYear": 2020,
+  "createdAt": {
+    "$date": "2024-09-05T13:23:37.194Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-05T13:23:37.194Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66d9db183ef5f6b6ddbc3c6b"
+  },
+  "title": "Learning JavaScript",
+  "author": "Tim Wright",
+  "publishYear": 2013,
+  "createdAt": {
+    "$date": "2024-09-05T16:23:52.985Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-05T16:23:52.985Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66d9e0e4057319e440ff65ee"
+  },
+  "title": "JavaScript",
+  "author": "David Flanagan",
+  "publishYear": 2011,
+  "createdAt": {
+    "$date": "2024-09-05T16:48:36.250Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-05T16:48:36.250Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66d9e174057319e440ff65f0"
+  },
+  "title": "Professional Web Design",
+  "author": "Clint Eccher",
+  "publishYear": 2015,
+  "createdAt": {
+    "$date": "2024-09-05T16:51:00.131Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-05T16:51:00.131Z"
+  },
+  "__v": 0
+}]

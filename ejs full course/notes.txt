@@ -1,0 +1,31 @@
+go to :
+(EJS Full Course with a project_Zero to Hero_English Tutorial) video if you don't understand...
+
+Templating languages: most popular is... ejs, handlebars, pug etc.
+Ejs allows us to run plain js in HTML
+Ejs is simple, lightweight, fast
+Most downloaded templating language on npm
+Founded in Feb, 2011
+
+How to use EJS:
+install: npm install ejs
+app.set('view engine', 'ejs');
+
+Views(folder) -> index.ejs
+res.render('index',{});
+
+
+websites to go to:
+dashboard.heroku.com-create an account...create an app...then follow instructions from the website to save the app on heroku
+
+when deploying
+1. heroku- WILL GIVE YOU A PORT ....
+const PORT = process.env.PORT
+
+2. add a Procfile: (put in it)...
+web: node index.js
+
+add gitignore file to not push your node modules or any other files in git:
+node_modules/
+
+node_modules/...CANT BE PUSHED TO GIT HUB....GET THEM ON THE STREET TO FUNCTION PROJECTS

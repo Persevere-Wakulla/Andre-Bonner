@@ -1,0 +1,26 @@
+
+Bootstrap 5 FULL COURSE VIDEO
+
+0:00 Is Bootstrap still relevant?
+1:14 Components
+2:15 Utility classes
+2:54 Container
+3:36 Grid system
+4:24 Responsiveness
+6:23 VS Code extension
+6:55 How to include Bootstrap
+8:50 Bootstrap Icons
+9:16 Project from scratch
+10:37 Project setup
+12:46 Including Bootstrap in our project
+14:35 Responsive navbar component
+17:27 Using container class
+23:52 Carousel slider component
+36:03 Modal component
+38:31 Form
+41:28 Using grid system
+44:13 Fixing carousel caption issue
+46:23 Overview section with Bootstrap Icons
+53:46 Packages section with card component
+58:39 FAQ section with accordion component
+1:02:16 Footer

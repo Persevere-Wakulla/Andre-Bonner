@@ -1,0 +1,119 @@
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #021558f8;
+    padding: 1rem 2rem;
+    color: #ffffff;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    gap: 2rem;
+}
+
+nav a{
+    color: #ffffff;
+}
+
+nav a:hover{
+    color: goldenrod;
+}
+
+main{
+    background-image: url(../img/office-blue-blur.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 1rem 2rem;
+    height: 90vh;
+    text-align: center;
+    
+}
+
+#form{
+    padding: 20px;
+    /* width: 50%; */
+    text-align: center;
+}
+
+input{
+    width: 15rem;
+    height: 2rem;
+    border-style: groove;
+    border-color: rgba(1, 31, 53, 0.922) ;
+    /* text-align: center; */
+    align-items: center;
+}
+
+button{
+    padding: 5px;
+    background-color: #0215587e;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.container{
+    max-width: 800px;
+    padding: 20px;
+}
+
+.list-container{
+    max-height: 450px; /* Set a maximum height for the list */
+            overflow-y: auto; /* Add vertical scrolling if content exceeds the height */
+
+}
+
+#list-title{
+    color: #ffffff;
+    background-color: #021558a5;
+    padding: 20px;
+}
+
+ul{
+    font-size: x-large;
+    color: #ffffff;
+    list-style: square;
+    line-height: 3rem;
+}
+
+#list{
+    padding: 10px;
+    background-color: #01081e3a;
+
+}
+
+li:hover{
+    color: gold;
+}
+
+footer{
+    padding: 1rem 2rem;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #021458;
+    padding: 1rem 2rem;
+    color: #ffffff;
+}
+
+
+/* contact page */
+#contact-title{
+    padding: 20px;
+    color: #ffffff;
+}

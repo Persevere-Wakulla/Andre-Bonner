@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: figtree;
+  src: url(./assets/fonts/Figtree-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: fontAwesome;
+  src: url(./assets/fonts/fontawesome.woff2);
+}
+
+@font-face {
+  font-family: young-serif;
+  src: url(./assets/fonts/young-serif/YoungSerif-Regular.ttf);
+}
+
+@font-face {
+  font-family: outfit;
+  src: url(./assets/fonts/outfit/Outfit-VariableFont_wght.ttf);
+}
+
+:root {
+  font-family: outfit;
+  line-height: 1.5;
+  background-color: var(--White);
+
+  --Navbar-Gray-Blue: #252d38;
+
+  --Orange: hsl(26, 100%, 55%);
+  --Pale-orange: hsl(25, 100%, 94%);
+
+  --Very-dark-blue: hsl(220, 13%, 13%);
+  --Dark-grayish-blue: hsl(219, 9%, 45%);
+  --Grayish-blue: hsl(220, 14%, 75%);
+  --Light-grayish-blue: hsl(223, 64%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --Black-75: hsla(0, 0%, 0%, 0.75);
+
+  --Shadow: hsla(0, 1%, 29%, 0.664);
+
+  --Extra-Small-shadow: 0 2px 4px var(--Black-75);
+  --Small-shadow: 0 4px 8px var(--Black-75);
+  --Modal-shadow: 0 16px 24px var(--Black-75);
+
+  --Font-size-p: 16px;
+  --Font-weight-small: 400;
+  --Font-weight-large: 700;
+}
+
+.flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.gap {
+  gap: .5rem;
+}
+
+.mid-gap {
+  gap: 1.5rem;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.stretch {
+  justify-content: stretch;
+}

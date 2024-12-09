@@ -1,0 +1,345 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: font1;
+  src: url('uniquefonts/Boullevard/BoullervarD\ 3d\ extrude.ttf');
+}
+
+@font-face {
+  font-family: font2;
+  src: url('uniquefonts/Brodetto/Brodetto.ttf');
+}
+
+@font-face {
+  font-family: font3;
+  src: url('uniquefonts/aAnotherTag.ttf');
+}
+
+@font-face {
+  font-family: font4;
+  src: url('uniquefonts/docallismeonstreet.otf');
+}
+
+.i-font {
+  font-family: font4;
+
+}
+
+/* ! ROOT LAYOUT */
+#root-top{
+  margin-top: 7rem;
+
+}
+main {
+  height: 100vh;
+
+}
+
+.c-topArticle {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.c-header {
+  background-color: darkblue;
+  color: #ffffff;
+  gap: 30px;
+  /* this covers the screen in diffrent queries */
+  padding: 20px;
+  width: 100vw;
+  /* height: 10px; */
+}
+
+/* ! display block in media queries and button(hamburger) */
+aside {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.navclosebtn {
+  display: block;
+  cursor: pointer;
+  float: left;
+}
+
+.nav-links {
+  width: 50%;
+  /* text-decoration-style: none; */
+  background-color: rgba(237, 235, 235, 0.766);
+  /* min-height: 10vh; */
+  /* margin-bottom: 20px; */
+  padding: 20px;
+  text-align: center;
+}
+
+/*! Regular a tags/LINKS */
+a {
+  /*? turn inline element to a block element for spacing */
+  display: block;
+  /* font-size: larger; */
+  text-decoration: none;
+  height: 50px;
+  
+}
+
+a:hover {
+  /* background-color: rgba(17, 16, 16, 0.976); */
+  /* color: rgb(177, 151, 6); */
+  /* padding: 10px; */
+  /* border-radius: 80px; */
+  /* font-family: font1; */
+  /* font-size:xx-large */
+  /* height: 50px; */
+}
+/* ! Blogs.jsx-PAGE-BLOG-LINKS DISTINGUISHED BETWEEN...anchor element/LINKS css */
+.blog-links{
+  display: inline;
+  font-size: large;
+  font-family:sans-serif;
+}
+.blog-links:hover{
+  /* font-size: large; */
+  /* font-family:font1; */
+  /* background-color: #ffffff; */
+  /* padding: 0; */
+}
+
+.ham-image {
+  height: 20px;
+}
+
+
+.c-newsTitle {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+.c-blogP {
+  gap: 10px;
+}
+
+.c-subscribeSect {
+  padding: 0px;
+  border: solid grey 5px;
+  /* gap: 20px; */
+  /* position: sticky; */
+  background-color: #ffffff;
+}
+
+.c-subscribeBtnSect {
+  justify-content: center;
+}
+
+.c-subscribeBtn {
+  padding: 10px 20px;
+  color: #ffffff;
+  background-color: darkblue;
+}
+
+.c-bottomArticle {
+  
+  margin-top: 12rem;
+
+}
+
+.c-home {
+  margin-top: 38rem;
+}
+
+.c-about {
+  margin-top: 38rem;
+}
+
+#help-top {
+  margin-top: 38rem;
+}
+
+.c-blogsect {
+  padding-top: 50px;
+  padding: 10px;
+  border: solid gray 2px;
+  gap: 20px;
+  position: relative;
+}
+
+/* //! SubscribeModal */
+.c-cancelbtn {
+  color: red;
+}
+
+.c-subcribeHeader {
+  font-weight: bolder;
+}
+
+.c-subscribeSection {
+  outline: solid black 1px;
+}
+
+.c-subscribeSectionP {
+  padding-bottom: 20px;
+}
+
+.c-subscribeSectionPrice {
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+.c-subscribeSectionBottom {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.c-selectBtn {
+  outline: solid black 1px;
+  font-weight: 600;
+}
+.c-selectBtn:hover{
+  /* background-color: #060606;
+  padding: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 0px;
+  font-family: font4;
+  box-shadow:  rgba(122, 122, 122, 0.316) 12px 12px 2px 2px; */
+}
+.c-formSubmit{
+  outline: #060606 solid;
+}
+.c-formSubmit:hover{
+  /* background-color: #060606;
+  color: rgb(177, 151, 6);
+  padding: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 0px;
+  font-family: font4;
+  box-shadow:  rgba(122, 122, 122, 0.316) 12px 12px 2px 2px;
+ font-size: xx-large; */
+}
+.c-subcribeFooter {
+  padding-top: 10%;
+}
+
+/* //! PURCHASE DETAILS */
+.c-subscribeForm {
+ 
+  min-height: 100vh;
+}
+
+.c-amount {
+  
+  justify-content: flex-end;
+}
+
+.c-priceSectDiv {
+  justify-content: space-between;
+}
+
+
+/* ! Blog Layout */
+/*! finish triangle and blog detail section */
+/* .blogLayout {} */
+.backbtn-link:hover{
+  /* background-color: #3a38388a; */
+  /* font-size: xx-large; */
+  padding: 25px;
+  border-radius: 10px;
+}
+#blog-top {
+  margin-top: 27rem;
+  padding: 20px;
+  
+}
+
+.triangleContainer {
+  position: fixed;
+    height: 100%;
+    width: 160px;
+    z-index: 1;
+    top: 150px;
+    right: 100px;
+    width: 20px;
+}
+
+.triangle {
+  background: rgba(17, 5, 246, 0.438);
+    position: sticky;
+    padding: 15px;
+    border-radius: 150px;
+    width: 60px;
+    height: 75px;
+    color: #ffffff;
+  }
+  /* .doubletriangle {
+}
+.blogLayouttitle {}
+
+.blogLayoutparagraph {} */
+
+/*! FLEX  */
+.c-flex {
+  display: flex;
+  justify-content: left;
+}
+
+/* ! DISPLAY NONE */
+.c-DisplayNone {
+  display: none;
+}
+
+/* ! HELP SECTION */
+.contact-btn {
+  background: darkblue;
+}
+.question{
+  padding-bottom: 20px;
+}
+#email:hover {
+  outline: solid rgb(254, 4, 4) 3px;
+}
+
+#message:hover {
+  outline: solid rgb(254, 4, 4) 3px;
+}
+
+@media(min-width:350px) {
+  .c-bottomArticle {
+    margin-top: 10.5rem;
+  }
+
+  .c-amount {
+    /* float: right; */
+    padding-right: 50px;
+  }
+}
+
+@media(min-width:448px) {
+  .c-bottomArticle {
+    margin-top: 9.2rem;
+  }
+
+}
+
+@media(min-width: 768px) {
+
+  /* ! display block in media queries and button(hamburger) */
+  aside {
+    position: static;
+    z-index: 1;
+    min-height: 30px;
+    display: flex;
+  }
+
+  .nav-links {
+    
+    background-color: rgba(134, 132, 132, 0.969);
+  }
+
+  a {
+    display: block;
+  }
+}
